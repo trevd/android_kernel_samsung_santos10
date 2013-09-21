@@ -1,0 +1,62 @@
+# arch/x86/platform/intel-mid/Makefile.sec
+#
+# Copyright (C) 2013 Samsung Electronics Co, Ltd.
+#
+# This software is licensed under the terms of the GNU General Public
+# License version 2, as published by the Free Software Foundation, and
+# may be copied, distributed, and modified under those terms.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+
+obj-$(CONFIG_BOARD_CTP_SAMSUNG)		+= sec_libs/
+
+obj-$(CONFIG_BOARD_CTP_SAMSUNG)		+= device_libs/platform_clvs_audio.o
+
+ifeq ($(CONFIG_BOARD_CTP_SAMSUNG),y)
+CFLAGS_intel-mid.o			= \
+	-include $(srctree)/arch/x86/platform/intel-mid/sec_libs/sec_weak_decls.h
+endif
+
+# CLT-3G (1st reference board in samsung)
+obj-$(CONFIG_BOARD_SAMSUNG_CLT3G)	+= board-clt3g.o \
+					   board-clt3g-dev.o \
+					   board-clt3g-hsu.o \
+					   board-clt3g-i2c.o \
+					   board-clt3g-input.o
+
+obj-$(CONFIG_BOARD_SAMSUNG_CLT3G)	+= board-clt3g-muxset-r00.o \
+					   board-clt3g-muxset-r03.o
+
+# Santos10i-3G/WiFi/LTE (GT-P52xx)
+obj-$(CONFIG_BOARD_SAMSUNG_SANTOS10)	+= board-santos10.o \
+					   board-santos10-dev.o \
+					   board-santos10-hsu.o \
+					   board-santos10-i2c.o \
+					   board-santos10-input.o \
+					   board-santos10-connector.o \
+					   board-santos10-modems.o \
+					   board-santos10lte-modems.o \
+					   board-santos10-display.o \
+					   board-santos10-battery.o \
+					   board-santos10-sfi.o \
+					   board-santos10-vibrator.o \
+					   board-santos10-irled.o \
+					   board-santos10-wlan.o \
+					   board-santos10-thermistor.o
+
+obj-$(CONFIG_BOARD_SAMSUNG_SANTOS10)	+= board-santos10-muxset-r01.o \
+					   board-santos10-muxset-r03.o \
+					   board-santos10-muxset-r04.o \
+					   board-santos10-muxset-r05.o \
+					   board-santos10-muxset-r06.o \
+					   board-santos10-muxset-r07.o \
+					   board-santos10lte-muxset-r00.o \
+					   board-santos10lte-muxset-r03.o \
+					   board-santos10lte-muxset-r04.o \
+					   board-santos10lte-muxset-r05.o \
+					   board-santos10lte-muxset-r06.o \
+					   board-santos10lte-muxset-r07.o

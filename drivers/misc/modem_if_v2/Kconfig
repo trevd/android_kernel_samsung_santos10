@@ -1,0 +1,19 @@
+menuconfig SEC_MODEM_V2
+	bool "Samsung Mobile Modem Interface v2"
+	default n
+	---help---
+	  Samsung Modem Interface Driver V2.
+	  This modem interface driver based on Proxima lte(toro).
+	  modem_if_v2 will support ipcv5 and ipcv4 as well,
+	  and this optimized for internel/externel dpram and usb link driver.
+
+config UMTS_MODEM_XMM626X
+	bool "modem chip : IMC XMM626X"
+	depends on SEC_MODEM_V2
+	default n
+
+config LINK_DEVICE_MIPI
+	bool "modem driver link device MIPI-HSI"
+	depends on SEC_MODEM_V2
+	depends on HSI
+	default n

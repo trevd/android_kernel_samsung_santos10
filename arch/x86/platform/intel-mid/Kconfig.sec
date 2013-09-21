@@ -1,0 +1,61 @@
+# arch/x86/platform/intel-mid/Kconfig.sec
+#
+# Copyright (C) 2013 Samsung Electronics Co, Ltd.
+#
+# This software is licensed under the terms of the GNU General Public
+# License version 2, as published by the Free Software Foundation, and
+# may be copied, distributed, and modified under those terms.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+
+config BOARD_CTP_SAMSUNG
+	bool "CTP based Samsung Board Type"
+	depends on BOARD_CTP
+	default n
+
+config BOARD_SAMSUNG_CLT3G
+	bool "Samsung CLT3G Board"
+	depends on BOARD_CTP_SAMSUNG
+	select FW_SAMSUNG_CLT3G_TSP
+	default n
+
+config FW_SAMSUNG_CLT3G_TSP
+	bool
+	default n
+
+config BOARD_SAMSUNG_SANTOS10
+	bool "Samsung Santos10 Board (GT-P52xx)"
+	depends on BOARD_CTP_SAMSUNG
+	select FW_SAMSUNG_SANTOS10_TSP
+	select FW_SAMSUNG_CLT3G_TSP
+	default n
+
+config FW_SAMSUNG_SANTOS10_TSP
+	bool
+	default n
+
+config BLUETOOTH_BCM4330
+	bool "Enable BCM4330 driver"
+	default n
+	help
+	  Adds BCM4330 RFKILL driver for Broadcom BCM4330 chipset
+
+config BLUETOOTH_BCM4334
+	bool "Enable BCM4334 driver"
+	default n
+	help
+	  Adds BCM4334 RFKILL driver for Broadcom BCM4334 chipset
+
+config SAMSUNG_SERIAL_NUM
+	bool "Print ARM architecture style serial number in /proc/cpuinfo"
+	depends on BOARD_CTP_SAMSUNG
+	default n
+	help
+	  Some userspace applications require a unique id to run.
+	  In the Android platform, most of application assume that the current
+	  running platform is ARM not x86.
+	  This feature provides simple compatibility with ARM in x86.
