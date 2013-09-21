@@ -1,1 +1,0 @@
-cmd_arch/x86/syscalls/../include/generated/asm/syscalls_32.h := /bin/sh '/android/build/android-cm-10/kernel/samsung/santos10/arch/x86/syscalls/syscalltbl.sh' /android/build/android-cm-10/kernel/samsung/santos10/arch/x86/syscalls/syscall_32.tbl arch/x86/syscalls/../include/generated/asm/syscalls_32.h
