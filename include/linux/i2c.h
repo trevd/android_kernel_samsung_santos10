@@ -28,6 +28,7 @@
 #define _LINUX_I2C_H
 
 #include <linux/types.h>
+#ifdef __KERNEL__
 #include <linux/mod_devicetable.h>
 #include <linux/device.h>	/* for struct device */
 #include <linux/sched.h>	/* for completion */
@@ -504,7 +505,7 @@ extern void acpi_i2c_register_devices(struct i2c_adapter *adap);
 #else
 static inline void acpi_i2c_register_devices(struct i2c_adapter *adap) {}
 #endif
-
+#endif /* __KERNEL__ */
 /**
  * struct i2c_msg - an I2C transaction segment beginning with START
  * @addr: Slave address, either seven or ten bits.  When this is a ten

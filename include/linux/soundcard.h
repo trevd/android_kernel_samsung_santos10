@@ -1066,7 +1066,9 @@ typedef struct mixer_vol_table {
  */
 #define SEQ_DECLAREBUF()		SEQ_USE_EXTBUF()
 
+#if __KERNEL__
 void seqbuf_dump(void);	/* This function must be provided by programs */
+#endif /* __KERNEL__*/
 
 #define SEQ_PM_DEFINES int __foo_bar___
 
